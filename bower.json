@@ -1,0 +1,24 @@
+{
+  "name": "Alarm Clock HTML5/CSS3/Mobile",
+  "version": "0.0.1",
+  "authors": [
+    "Grant Gingell <grantgingell@gmail.com>"
+  ],
+  "description": "Alarm clock single page web app that slices colors and photos as background to the numbers.",
+  "main": "index.html",
+  "keywords": [
+    "app",
+    "alarm",
+    "clock"
+  ],
+  "license": "MIT",
+  "homepage": "grantgingell.com/alarm/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
