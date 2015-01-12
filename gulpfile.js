@@ -26,6 +26,7 @@ var footer = require('gulp-footer');
 var concat = require('gulp-concat');
 var jshint = require('gulp-jshint');
 var cached = require('gulp-cached');
+var uglify = require('gulp-uglify');
 var remember = require('gulp-remember');
 
 var scriptsGlob = 'src/**/*.js';
@@ -34,10 +35,12 @@ gulp.task('scripts', function() {
   return gulp.src(scriptsGlob)
       .pipe(cached('scripts'))        // only pass through changed files
       .pipe(jshint())                 // do special things to the changed files...
-      .pipe(header('(function () {')) // e.g. jshinting ^^^
-      .pipe(footer('})();'))          // and some kind of module wrapping
+      .pipe(uglify())
+      //.pipe(header('(function () {')) // e.g. jshinting ^^^
+      //.pipe(footer('})();'))          // and some kind of module wrapping
       .pipe(remember('scripts'))      // add back all files to the stream
       .pipe(concat('app.js'))         // do things that require all files
+
       .pipe(gulp.dest('app/static/js/'));
 });
 
