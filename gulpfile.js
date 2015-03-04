@@ -28,10 +28,11 @@ var jshint = require('gulp-jshint');
 var cached = require('gulp-cached');
 var uglify = require('gulp-uglify');
 var remember = require('gulp-remember');
+var sass = require('gulp-sass');
 
 var scriptsGlob = 'src/**/*.js';
 
-gulp.task('scripts', function() {
+gulp.task('scripts', function () {
   return gulp.src(scriptsGlob)
       .pipe(cached('scripts'))        // only pass through changed files
       .pipe(jshint())                 // do special things to the changed files...
@@ -42,6 +43,12 @@ gulp.task('scripts', function() {
       .pipe(concat('app.js'))         // do things that require all files
 
       .pipe(gulp.dest('app/static/js/'));
+});
+
+gulp.task('sass', function () {
+  gulp.src('src/scss/*.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('app/static/css'));
 });
 
 gulp.task('watch', function () {
